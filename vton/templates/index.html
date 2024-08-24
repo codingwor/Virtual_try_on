@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Virtual Cloth Assistant</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>Virtual Cloth Assistant</h1>
+        <p>
+          Wanna try out how that cloth suits you? Upgrade your shopping
+          experience with an intelligent trial room.
+        </p>
+      </div>
+
+      <form method="post" enctype="multipart/form-data">
+        <div class="upload-container">
+          <div class="upload-section">
+            <label for="model">Upload Clothing Image:</label>
+            <p>Please upload your Clothing image</p>
+            <input
+              type="file"
+              id="model"
+              name="model"
+              accept="image/*"
+              required
+            />
+            <div class="image-preview">
+              <h3>Clothing Image:</h3>
+              <img
+                src="data:image/png;base64,{{ model_image }}"
+                alt="Model Image"
+              />
+            </div>
+          </div>
+
+          <div class="upload-section">
+            <label for="clothing">Upload Model Image:</label>
+            <p>Please upload your Model image</p>
+            <input
+              type="file"
+              id="clothing"
+              name="clothing"
+              accept="image/*"
+              required
+            />
+            <div class="image-preview">
+              <h3>Model Image:</h3>
+              <img
+                src="data:image/png;base64,{{ clothing_image }}"
+                alt="Clothing Image"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <button type="submit" class="button">Try On</button>
+        </div>
+      </form>
+
+      <div class="result-section">
+        <h2>Result:</h2>
+        <img
+          src="data:image/png;base64,{{ result_image }}"
+          alt="Result Image"
+          class="result-image"
+        />
+      </div>
+    </div>
+  </body>
+</html>
